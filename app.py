@@ -16,7 +16,7 @@ def about():
     return render_template('about.html')
 
 @app.route('/about-css')
-def about():
+def about_css():
     return render_template('about-css.html')
 
 

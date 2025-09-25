@@ -1,0 +1,44 @@
+/* --- Global Styles --- */
+
+/* Style all paragraphs */
+p {
+    font-size: 20px;    /* Rule 1 */
+    line-height: 1;     /* Rule 2 */
+}
+
+/* Style all level-two headers (h2) */
+h2 {
+    color: #6CC5E5;         /* Rule 1 */
+    font-family: Calibri    /* Rule 2 */
+}
+
+/* Style all tables */
+table {
+    border: 2px #3F4142;    /* Border with color */
+    border-collapse: collapse;
+    width: 70%;
+    margin: 20px auto;
+}
+
+th, td {
+    border: 1px #3F4142;
+    padding: 12px;
+    text-align: center;
+}
+
+/* Unique paragraph using ID */
+#special-paragraph {
+    color: #F2C8FD;      /* Rule 1 */
+    font-weight: bold;   /* Rule 2*/
+}
+
+/* Class-based styling */
+.highlight {
+    background-color: #DAE9E5;  /* Rule 1 */
+}
+
+/* Image styling using a class "logo" */
+img.logo {
+    width: 200px;      /* Rule 1 */
+    height: auto;      /* Rule 2 */
+}
