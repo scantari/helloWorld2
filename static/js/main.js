@@ -1,6 +1,6 @@
 // Change the paragraph text
 function changeText() {
-    document.getElementById("changeableText").textContent = "The text has been changed!";
+    document.getElementById("changeableText").textContent = "Just kidding, it is the Good Place!";
 }
 
 // Greet the user using the form
