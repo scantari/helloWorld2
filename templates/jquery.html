@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Classes</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        label {
+            display: block;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+
+        select:hover {
+            border-color: #667eea;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .description-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .description-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .description-box p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .course-code {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My College Classes</h1>
+        <p class="subtitle">Select a class to view its description</p>
+
+        <label for="classDropdown">Choose a class:</label>
+        <select id="classDropdown">
+            <option value="">-- Select a class --</option>
+        </select>
+
+        <div id="descriptionBox" class="description-box">
+            <span class="course-code" id="courseCode"></span>
+            <h3 id="className"></h3>
+            <p id="classDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Mock data for college classes
+            const classes = [
+                {
+                    code: "CS 101",
+                    name: "Introduction to Computer Science",
+                    description: "Fundamental concepts of computer science including programming basics, algorithms, data structures, and computational thinking. Students learn problem-solving techniques using Python."
+                },
+                {
+                    code: "MATH 201",
+                    name: "Calculus II",
+                    description: "Advanced calculus topics including integration techniques, sequences and series, parametric equations, and polar coordinates. Applications to physics and engineering problems."
+                },
+                {
+                    code: "ENG 105",
+                    name: "English Composition",
+                    description: "Development of writing skills through analysis of various texts, research methods, and composition of argumentative essays. Emphasis on critical thinking and effective communication."
+                },
+                {
+                    code: "HIST 150",
+                    name: "World History Since 1500",
+                    description: "Survey of major historical events, cultural developments, and global interactions from the Renaissance to the present day. Explores colonialism, industrialization, and modern conflicts."
+                },
+                {
+                    code: "BIO 210",
+                    name: "General Biology",
+                    description: "Introduction to cellular biology, genetics, evolution, and ecology. Laboratory component includes microscopy, dissections, and experimental design."
+                },
+                {
+                    code: "PSYCH 101",
+                    name: "Introduction to Psychology",
+                    description: "Overview of major psychological theories, research methods, and applications. Topics include cognition, development, personality, social psychology, and mental health."
+                },
+                {
+                    code: "ECON 201",
+                    name: "Microeconomics",
+                    description: "Study of individual economic behavior, market structures, supply and demand, consumer theory, and production costs. Applications to real-world business decisions."
+                },
+                {
+                    code: "CS 250",
+                    name: "Data Structures and Algorithms",
+                    description: "In-depth study of fundamental data structures including trees, graphs, hash tables, and heaps. Analysis of algorithm efficiency and complexity theory."
+                },
+                {
+                    code: "PHIL 120",
+                    name: "Introduction to Ethics",
+                    description: "Examination of moral philosophy, ethical theories, and contemporary ethical issues. Students analyze case studies and develop reasoned arguments about moral dilemmas."
+                },
+                {
+                    code: "CHEM 151",
+                    name: "General Chemistry",
+                    description: "Principles of atomic structure, chemical bonding, stoichiometry, thermodynamics, and equilibrium. Weekly laboratory sessions reinforce theoretical concepts."
+                },
+                {
+                    code: "ART 110",
+                    name: "Art History: Renaissance to Modern",
+                    description: "Survey of Western art movements from the Renaissance through contemporary periods. Analysis of major artists, styles, and cultural contexts."
+                },
+                {
+                    code: "STAT 301",
+                    name: "Probability and Statistics",
+                    description: "Introduction to probability theory, statistical inference, hypothesis testing, and regression analysis. Applications using statistical software packages."
+                }
+            ];
+
+            // Populate dropdown with classes
+            $.each(classes, function(index, course) {
+                $('#classDropdown').append(
+                    $('<option></option>')
+                        .val(index)
+                        .text(course.code + ' - ' + course.name)
+                );
+            });
+
+            // Handle dropdown change event
+            $('#classDropdown').on('change', function() {
+                const selectedIndex = $(this).val();
+
+                if (selectedIndex === "") {
+                    $('#descriptionBox').fadeOut(200);
+                } else {
+                    const selectedClass = classes[selectedIndex];
+
+                    $('#courseCode').text(selectedClass.code);
+                    $('#className').text(selectedClass.name);
+                    $('#classDescription').text(selectedClass.description);
+
+                    $('#descriptionBox').fadeIn(300);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

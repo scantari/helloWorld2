@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Contact Form{% endblock %}
+
+{% block content %}
+{% if submitted %}
+<div class="card shadow border-0">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">Thank You!</h4>
+    </div>
+    <div class="card-body">
+        <p class="lead mb-3">We received the following information:</p>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>First Name:</strong> {{ first_name }}</li>
+            <li class="list-group-item"><strong>Last Name:</strong> {{ last_name }}</li>
+            <li class="list-group-item"><strong>Email:</strong> {{ email }}</li>
+            <li class="list-group-item"><strong>Favorite Programming Language:</strong> {{ extra_field }}</li>
+        </ul>
+    </div>
+</div>
+
+{% else %}
+<div class="card shadow border-0">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">Contact Us</h4>
+    </div>
+    <div class="card-body">
+        <form method="POST" class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" name="first_name" required>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="last_name" required>
+            </div>
+
+            <div class="col-md-12">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+
+            <div class="col-md-12">
+                <label class="form-label">Favorite Programming Language</label>
+                <input type="text" class="form-control" name="extra_field">
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary px-4">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

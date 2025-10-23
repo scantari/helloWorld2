@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Favorite Course{% endblock %}
+
+{% block content %}
+<div class="card shadow border-0">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">Favorite Course Information</h4>
+    </div>
+    <div class="card-body">
+        {% if subject and course_number %}
+            <p class="lead">
+                You entered your favorite course as:
+                <strong class="text-primary">{{ subject }} {{ course_number }}</strong>
+            </p>
+        {% else %}
+            <p class="text-muted fst-italic">
+                No course provided. Pass subject and course_number in the URL like this:
+                <br>
+                <code>?subject=ARTH&course_number=206C</code>
+            </p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
