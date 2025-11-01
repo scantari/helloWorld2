@@ -41,13 +41,14 @@
         <br>{{ student['last_name'] }}
     {% endif %}
   </div>
-  </div class="col-md-4">
-    <label for="last_name" class="form-label"><strong>Email</strong></label>
+  <div class="col-md-4">
+    <label for="email" class="form-label"><strong>Email</strong></label>
     {% if action and action in ['create', 'update'] %}
-    <input type="text" class="form-control" id="email" name="email" value="{{ student['email'] if student else '' }}" required>
+    <input type="email" class="form-control" id="email" name="email" maxlenth="100" size="30" value="{{ student['email'] if student else '' }}" required>
     {% else %}
-        <br>{{ student['email'] }}\
+        <br>{{ student['email'] }}
     {% endif %}
+  </div>
   <div class="col-md-4">
     <label for="birth_date" class="form-label"><strong>Birth Date</strong></label>
     {% if action and action in ['create', 'update'] %}
