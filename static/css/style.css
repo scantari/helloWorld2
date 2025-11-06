@@ -9,7 +9,18 @@ p {
 /* Style all level-two headers (h2) */
 h2 {
     color: #6CC5E5;         /* Rule 1 */
-    font-family: Calibri    /* Rule 2 */
+    font-family: Calibri;    /* Rule 2 */
+}
+
+header h3 {
+    color: #6CC5E5;         /* Rule 1 */
+    font-family: Calibri;    /* Rule 2 */
+    text-align: center;
+}
+
+h4 {
+    color: #262626;         /* Rule 1 */
+    font-family: Arial;    /* Rule 2 */
 }
 
 /* Style all tables */
