@@ -5,13 +5,14 @@ from datetime import datetime as dt
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+# Create instance folder BEFORE creating the Flask app
+instance_path = os.path.join(basedir, 'instance')
+os.makedirs(instance_path, exist_ok=True)
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.instance_path, 'university.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'beyond_course_scope'
-
-# Create instance folder if it doesn't exist
-os.makedirs(app.instance_path, exist_ok=True)
 
 db.init_app(app)
 
