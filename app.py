@@ -9,8 +9,11 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.instance_path, 'university.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'beyond_course_scope'
-db.init_app(app)
 
+# Create instance folder if it doesn't exist
+os.makedirs(app.instance_path, exist_ok=True)
+
+db.init_app(app)
 
 @app.route('/student/view')
 def student_view_all():
