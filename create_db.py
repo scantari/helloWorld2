@@ -27,7 +27,7 @@ with app.app_context():
     for each_student in students:
         print(f'{each_student["first_name"]} {each_student["last_name"]} inserted into Student')
         a_student = Student(first_name=each_student["first_name"], last_name=each_student["last_name"],
-                            email=each_student.get("email", f"{each_student['first_name'].lower()}.{each_student['last_name'].lower()}@umd.edu"),
+                            email=each_student['email'],
                             major_id=each_student["major_id"], birth_date=each_student["birth_date"],
                             is_honors=each_student["is_honors"])
         db.session.add(a_student)
